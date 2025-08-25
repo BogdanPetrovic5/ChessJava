@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class Field extends JButton {
     private Figure _figure;
+    private int y;
+    private int x;
     public Field(){
 
     }
@@ -17,4 +19,21 @@ public class Field extends JButton {
         return _figure;
     }
 
+
+    public int getXCoordinates() {
+        return x;
+    }
+
+
+    public int getYCooridnates() {
+        return y;
+    }
+
+    public void setXCooridanates(int x) {
+        this.x = x;
+    }
+
+    public void setYCooridnates(int y) {
+        this.y = y;
+    }
 }

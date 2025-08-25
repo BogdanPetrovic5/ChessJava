@@ -1,9 +1,12 @@
 package models.figures;
 
 import interfaces.IField;
+import models.Field;
 import models.enums.Figures;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Figure extends ImageIcon {
     protected IField field;
@@ -11,7 +14,9 @@ public abstract class Figure extends ImageIcon {
     private String _color;
     private int _x;
     private int _y;
+    private List<Field> availableFields;
     public Figure(Figures figureType, String color, String url, int x, int y, IField field) {
+        availableFields = new ArrayList<>();
         setFigureType(figureType);
         setFiguresColor(color);
         setUrl(url);
@@ -52,5 +57,16 @@ public abstract class Figure extends ImageIcon {
     public String getColor(){
         return  _color;
     }
+
+    public List<Field> getAvailableFields() {
+        return availableFields;
+    }
+    public void addAvailableField(Field field){
+        availableFields.add(field);
+    }
+    public void resetAvailableFields(){
+        availableFields.clear();
+    }
+
     public abstract Figure canMove(int x, int y, boolean isSelected);
 }

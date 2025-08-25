@@ -27,6 +27,7 @@ public class Pawn extends Figure {
         Figure figure = fields[currentY][currentX].getFigure();
 
         if (!isSelected) {
+            fields[currentY][currentX].setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
             if(currentX + 1 < 8 && (currentY + directionY >= 0 && currentY + directionY < 8)){
                 directionX = fields[currentY + directionY][currentX + 1].getFigure() != null ? 1 : 0;
                 if(directionX != 0) fields[currentY + directionY][currentX + directionX].setBorder(BorderFactory.createLineBorder(Color.RED, 2));
@@ -54,6 +55,7 @@ public class Pawn extends Figure {
 
         }else {
             if(x == currentX && currentY == y){
+                fields[currentY][currentX].setBorder(null);
                 if((currentX + 1 < 8 && (currentY + 1 < 8 && currentY - 1 >= 0))){
 
                         fields[currentY + directionY][currentX + 1].setBorder(null);
@@ -80,6 +82,7 @@ public class Pawn extends Figure {
             }
 
             if(this._checkMovementValidity(x,y,figure)){
+                fields[currentY][currentX].setBorder(null);
                 fields[y][x].setFigure(figure);
                 fields[y][x].setIcon(figure);
                 if(currentY + directionY <  8 && currentY + directionY >=0){
@@ -121,9 +124,16 @@ public class Pawn extends Figure {
         Field[][] fields = field.getField();
 
         if(fields[y][x].getFigure() != null){
-            if((x > currentX || x < currentX)) return true;
+            if((x > currentX || x < currentX) && Math.abs(currentY - y) == 1) {
+                Figure checkFigure = fields[y][x].getFigure();
+                System.out.println(checkFigure.getColor());
+                if(!figure.getColor().equals(checkFigure.getColor())) return true;
+
+
+            }
+
         }
-        if(fields[y][x].getFigure() != null || (x > currentX || x < currentX)) {
+        if(fields[y][x].getFigure() != null) {
             return false;
         }
         if(currentY + directionY == y) return true;

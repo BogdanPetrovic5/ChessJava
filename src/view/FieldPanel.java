@@ -39,6 +39,8 @@ public class FieldPanel extends JPanel implements IField {
                 Field newField = new Field();
                 if((i + j) % 2 == 0) newField.setBackground(new Color(239, 193, 113));
                 else newField.setBackground(new Color(149, 101, 0));
+                newField.setYCooridnates(i);
+                newField.setXCooridanates(j);
                 fields[i][j] = newField;
                 fields[i][j].setFocusable(false);
                 final int y = i;
