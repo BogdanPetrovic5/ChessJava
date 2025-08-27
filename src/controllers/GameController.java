@@ -1,11 +1,12 @@
 package controllers;
 
 import interfaces.IField;
+import interfaces.IGameController;
 import models.Field;
 import models.Player;
 import models.figures.Figure;
 
-public class GameController {
+public class GameController implements IGameController {
     private Player _whitePlayer;
     private Player _blackPlayer;
     private IField _fieldPanel;
@@ -23,13 +24,22 @@ public class GameController {
             selected = _fields[y][x].getFigure();
         }
 
+        if(selected != null){
+            selected = selected.canMove(x, y, isSelected);
+        }
 
-        selected = selected.canMove(x, y, isSelected);
         isSelected = !isSelected;
 
 
 
 
+    }
+
+    @Override
+    public void handleCaputre(Figure figure) {
+        if(figure.getColor().equals("BLACK")){
+            _blackPlayer.removeFigure(figure);
+        }
     }
 
     public void setUpField(IField field){

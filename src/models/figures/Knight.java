@@ -1,6 +1,7 @@
 package models.figures;
 
 import interfaces.IField;
+import interfaces.IGameController;
 import models.Field;
 import models.enums.Figures;
 
@@ -10,8 +11,8 @@ import java.util.List;
 
 public class Knight extends Figure{
 
-    public Knight(Figures figureType, String color, String url, int x, int y, IField field) {
-        super(figureType, color, url, x, y,field);
+    public Knight(Figures figureType, String color, String url, int x, int y, IField field, IGameController gameController) {
+        super(figureType, color, url, x, y,field, gameController);
     }
 
     @Override

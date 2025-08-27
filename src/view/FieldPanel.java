@@ -58,20 +58,20 @@ public class FieldPanel extends JPanel implements IField {
                 Figure figure = null;
 
                 if(i == 0){
-                    figure = FiguresFactory.createFigure(backRow[j], "BLACK", "/assets/blacks/" + backRow[j].name().toLowerCase() + ".png",j, i, this);
+                    figure = FiguresFactory.createFigure(backRow[j], "BLACK", "/assets/blacks/" + backRow[j].name().toLowerCase() + ".png",j, i, this, _gameController);
 
 
                     _blackPlayer.addFigure(figure);
                 } else if(i == 1){
-                    figure = FiguresFactory.createFigure(Figures.PAWN, "BLACK","/assets/blacks/pawn.png", j,i,this );
+                    figure = FiguresFactory.createFigure(Figures.PAWN, "BLACK","/assets/blacks/pawn.png", j,i,this,_gameController);
                     _blackPlayer.addFigure(figure);
                 }
 
                 else if(i == 6){
-                    figure = FiguresFactory.createFigure(Figures.PAWN, "WHITE", "/assets/whites/pawn.png", j,i,this);
+                    figure = FiguresFactory.createFigure(Figures.PAWN, "WHITE", "/assets/whites/pawn.png", j,i,this,_gameController);
                     _whitePlayer.addFigure(figure);
                 } else if(i == 7){
-                    figure = FiguresFactory.createFigure(backRow[j], "WHITE", "/assets/whites/" + backRow[j].name().toLowerCase() + ".png", j, i,this);
+                    figure = FiguresFactory.createFigure(backRow[j], "WHITE", "/assets/whites/" + backRow[j].name().toLowerCase() + ".png", j, i,this,_gameController);
 
                     _whitePlayer.addFigure(figure);
                 }

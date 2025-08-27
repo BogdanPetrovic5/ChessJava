@@ -1,6 +1,7 @@
 package models.figures;
 
 import interfaces.IField;
+import interfaces.IGameController;
 import models.Field;
 import models.enums.Figures;
 
@@ -10,12 +11,14 @@ import java.util.List;
 
 public abstract class Figure extends ImageIcon {
     protected IField field;
+    protected IGameController gameController;
     private Figures _figureType;
     private String _color;
     private int _x;
     private int _y;
     private List<Field> availableFields;
-    public Figure(Figures figureType, String color, String url, int x, int y, IField field) {
+    public Figure(Figures figureType, String color, String url, int x, int y, IField field,IGameController gameController) {
+        this.gameController = gameController;
         availableFields = new ArrayList<>();
         setFigureType(figureType);
         setFiguresColor(color);

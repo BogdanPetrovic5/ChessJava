@@ -20,6 +20,12 @@ public abstract class Player {
         return figureList;
     }
 
+    public void removeFigure(Figure figure){
+        List<Figure> figures = getFigures();
+
+        figures.remove(figure);
+        System.out.println(figures.size());
+    }
 
 
 }

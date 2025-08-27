@@ -1,6 +1,7 @@
 package models.figures;
 
 import interfaces.IField;
+import interfaces.IGameController;
 import models.Field;
 import models.enums.Figures;
 
@@ -8,8 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Pawn extends Figure {
-    public Pawn(Figures figureType, String color, String url, int x, int y, IField field) {
-        super(figureType, color, url, x, y, field);
+    public Pawn(Figures figureType, String color, String url, int x, int y, IField field, IGameController gameController) {
+        super(figureType, color, url, x, y, field, gameController);
     }
 
     @Override
@@ -83,6 +84,9 @@ public class Pawn extends Figure {
 
             if(this._checkMovementValidity(x,y,figure)){
                 fields[currentY][currentX].setBorder(null);
+                if(fields[y][x].getFigure() != null && !fields[y][x].getFigure().getColor().equals(this.getColor())){
+                    gameController.handleCaputre(fields[y][x].getFigure());
+                }
                 fields[y][x].setFigure(figure);
                 fields[y][x].setIcon(figure);
                 if(currentY + directionY <  8 && currentY + directionY >=0){
